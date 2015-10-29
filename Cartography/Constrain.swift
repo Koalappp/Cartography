@@ -118,7 +118,7 @@ public func constrain(views: [View], replace group: ConstraintGroup = Constraint
 public func constrain<T: Hashable>(views: [T: View], replace group: ConstraintGroup = ConstraintGroup(), @noescape block: ([T : LayoutProxy] -> ())) -> ConstraintGroup {
     let context = Context()
     let proxies = views.map { ($0, LayoutProxy(context, $1)) }
-    block(Dictionary(proxies))
+    block(proxies)
     group.replaceConstraints(context.constraints)
 
     return group
